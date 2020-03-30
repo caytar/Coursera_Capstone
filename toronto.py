@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-wiki = pd.read_html("http://en.wikipedia.org/wiki/List_of_postal_codes_of_Canada:_M")
+wiki = pd.read_html("http://en.wikipedia.org/w/index.php?title=List_of_postal_codes_of_Canada:_M&oldid=947772202")
 
 
 alldata = []
