@@ -22,4 +22,21 @@ for column in wiki[0].columns:
             ])
 
 simplified = pd.DataFrame(alldata, columns=['PostalCode', 'Borough', 'Neighborhood'])
+#print(simplified)
+
+simplified.insert(loc=3,column="Latitude",value=0.0)
+simplified.insert(loc=4,column="Longitude",value=0.0)
+
+
+#### Get the coordinates
+import geocoder 
+
+# ARCGIS provider is used, google is very limited 
+
+for index,row in simplified.iterrows():
+    g = geocoder.arcgis(row["Borough"] + ", " + row["PostalCode"] + ", Canada" )
+    simplified.at[index,'Latitude'] = g.latlng[0]
+    simplified.at[index,'Longitude'] = g.latlng[1]
+
 print(simplified)
+
