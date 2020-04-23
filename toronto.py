@@ -1,3 +1,22 @@
+import foursquare
+import pandas as pd
+
+
+# Construct the client object
+client = foursquare.Foursquare(
+    client_id='ZMIFBYADUNN35RUQHQFY32PKLS2F14KUTAC4J2CMU35FVLSJ', 
+    client_secret='KOAYUEJ5BV2ORNJKFVYPUKMAZPTOUY5FPOKKZ3E5TCL4ULHA'
+    )
+
+# Build the authorization url for your app
+
+liste = client.venues.search(params={'query': 'restaurant', 'll': '40.7233,-74.0030'})
+
+
+liste2 = pd.json_normalize(liste)
+print(liste2)
+
+'''
 import pandas as pd
 import numpy as np
 
@@ -40,3 +59,4 @@ for index,row in simplified.iterrows():
 
 print(simplified)
 
+'''
